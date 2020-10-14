@@ -4,10 +4,9 @@
 #include "findsubstr.h"
 #pragma warning(disable:4996)
 
-
-
 int main(int argc, char* argv[]) {
 	char* inp;
+	int stop;
 	inp = (char*)malloc(100 * sizeof(char));
 	char inp1[100];
 	printf("Enter the input string: ");
@@ -17,9 +16,16 @@ int main(int argc, char* argv[]) {
 	printf("The input string: %s", inp);
 	fflush(stdin);
 	printf("\n");
-	getchar();
 	char* str;
 	str = (char*)malloc(100 * sizeof(char));
-	int stop = read_line(str);
-	printf("%d\n", stop);
+	do {
+		stop = read_line(str);
+		int a = find_sub_string(str, inp);
+		fflush(stdin);
+		if (a != -1) {
+			printf("%s", str);
+		}
+
+	} while (stop != -1);
+	return 0;
 }
